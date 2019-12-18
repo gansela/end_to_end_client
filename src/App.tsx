@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from "./components/SignIn"
 import store from "./redux/store"
 import LogIn from "./components/LogIn"
+import ChangePassword from "./components/ChangePassword"
 
 
 
@@ -33,6 +34,7 @@ class App extends React.Component<any, any>{
             <Switch>
               <Route path="/signin" component={SignIn} />
               <Route path="/login" component={LogIn} />
+              <Route path="/changepassword" component={ChangePassword} />
               <Route path="/" component={HomePage} />
               <Route path="**" component={() => <h1> Not Found! </h1>} />
             </Switch>

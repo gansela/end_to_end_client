@@ -1,6 +1,6 @@
 import Actions from "./actions.config";
 
-import { registerService, logInService, getOrders } from "./service";
+import { registerService, logInService, getOrders, cahngePasswordService } from "./service";
 
 export const saveUserAction = (user: any) => {
     return async (dispachFn: any) => {
@@ -72,3 +72,21 @@ export const getOrdersSuccess = (ordersArr: any) => {
     };
 };
 
+export const changePasswordAction = (user: any) => {
+    return async (dispachFn: any) => {
+        const response: any = await cahngePasswordService(user);
+        if (response.error) alert(response.error.details[0].message)
+        else {
+            alert(response.message)
+            dispachFn(changePasswordSuccess(response.redirect));
+        }
+    };
+};
+
+
+export const changePasswordSuccess = (redirect: boolean) => {
+    return {
+        type: Actions.SAVE_USER_SUCCESS,
+        payload: { redirect }
+    };
+};

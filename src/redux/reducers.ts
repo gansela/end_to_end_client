@@ -44,6 +44,12 @@ export default function root(state = initialState, action: any) {
                 orders: ordersArr
             }
         }
+        case Actions.CHANGE_PASSWORD_SUCCESS: {
+            return {
+                ...state,
+                redirect: action.payload.redirect
+            }
+        }
         default: {
             return state
         }

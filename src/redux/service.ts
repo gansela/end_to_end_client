@@ -20,6 +20,16 @@ export const logInService = async (logInUser: any) => {
 
 }
 
+export const cahngePasswordService = async (user: any) => {
+    try {
+        const { data } = await axios.post("http://localhost:3500/auth/changepassword", user);
+        return data;
+    } catch (ex) {
+        return []
+    }
+
+}
+
 export const getOrders = async (searchParams: any, userKey: string) => {
     const token = {
         headers: { 'authorization': userKey }
