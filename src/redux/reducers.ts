@@ -5,6 +5,9 @@ const initialState = {
     redirect: false,
     session: null,
     orders: [],
+    redirectLogin: false,
+    costumers: [],
+    ordersHeaders: {}
 }
 
 
@@ -22,11 +25,18 @@ export default function root(state = initialState, action: any) {
                 redirect: false
             }
         }
+        case Actions.DISABLE_REDIRECT_VERIFY: {
+            return {
+                ...state,
+                redirectLogin: false
+            }
+        }
         case Actions.STOP_SESSION: {
             return {
                 ...state,
                 session: null,
-                orders: []
+                orders: [],
+                costumers: []
             }
         }
         case Actions.LOGIN_USER_SUCCESS: {
@@ -44,10 +54,30 @@ export default function root(state = initialState, action: any) {
                 orders: ordersArr
             }
         }
+        case Actions.GET_COSTUMERS_SUCCESS: {
+            const { costumersArr } = action.payload
+            return {
+                ...state,
+                costumers: costumersArr
+            }
+        }
         case Actions.CHANGE_PASSWORD_SUCCESS: {
             return {
                 ...state,
                 redirect: action.payload.redirect
+            }
+        }
+        case Actions.VERIFY_TOKEN_SUCCESS: {
+            return {
+                ...state,
+                redirectLogin: action.payload.redirectLogin
+            }
+        }
+        case Actions.GET_ORDERS_HEADERS_SUCCESS: {
+            return {
+                
+                ...state,
+                ordersHeaders: action.payload.categories
             }
         }
         default: {

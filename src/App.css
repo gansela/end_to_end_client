@@ -12,6 +12,18 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 300px;
+  left: 901px;
+}
 
 .App-header {
   background-color: #282c34;
